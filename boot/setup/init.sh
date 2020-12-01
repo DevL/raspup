@@ -5,17 +5,17 @@ echo "[01] Setting the timezone"
 sudo rm -f /etc/localtime
 sudo ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 
-echo "[02] Linking the hostname to /boot/hostname"
-sudo ln -s /boot/hostname /etc/hostname
+echo "[02] Linking /etc/hostname to /boot/hostname"
+sudo rm -f /etc/hostname
+sudo ln -sf /boot/hostname /etc/hostname
 
-echo "[03] Creating a new user"
+echo "[03] Linking /etc/hosts to /boot/hosts"
+sudo rm -f /etc/hosts
+sudo ln -sf /boot/hosts /etc/hosts
+
+echo "[04] Creating a new user"
 sudo adduser devl
 groups | sed 's/pi //g' | sed -e "s/ /,/g" | xargs -I{} sudo usermod -a -G {} devl
-
-echo "[04] Adding setup script to the new user's home directory"
-sudo cp /boot/setup/setup.sh /home/devl/setup.sh
-sudo chown /home/devl/setup.sh devl
-sudo chmod +x /home/devl/setup.sh
 
 echo "[05] Forcefully removing the default user"
 sudo deluser --force --remove-home pi

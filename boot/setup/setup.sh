@@ -41,10 +41,4 @@ asdf plugin add ruby
 asdf install ruby latest
 asdf global ruby `asdf list ruby`
 
-echo "Entering cleanup phase"
-
-echo "[98] Removing boot volume setup files"
-sudo rm -rf /boot/setup
-
-echo "[99] Removing setup script"
-sudo rm $HOME/setup.sh
+echo "[Done]"
