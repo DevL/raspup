@@ -14,7 +14,7 @@ sudo cp /boot/etc/hosts /etc/hosts
 echo -e "\tAfter a reboot, this host will be known as '$(cat /etc/hostname)'"
 
 echo "[03] Creating a new user called '${USER}'"
-sudo adduser $USER
+sudo adduser $USER --create-home --groups sudo
 groups | sed 's/pi //g' | sed -e "s/ /,/g" | xargs -I{} sudo usermod -a -G {} $USER
 
 echo "[05] Expanding the root file system to use the entire SD card"
