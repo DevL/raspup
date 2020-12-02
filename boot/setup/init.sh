@@ -21,6 +21,9 @@ echo "[04] Creating a new user called '${USER}'"
 sudo adduser $USER
 groups | sed 's/pi //g' | sed -e "s/ /,/g" | xargs -I{} sudo usermod -a -G {} $USER
 
+echo "[05] Expanding the root file system to use the entire SD card"
+sudo raspi-config nonint do_expand_rootfs
+
 echo "[Done] Rebooting in 5 seconds. Please log in again as the new user and run the setup script"
 sleep 5
 sudo reboot
