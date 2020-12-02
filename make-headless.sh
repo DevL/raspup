@@ -32,8 +32,9 @@ echo "[04] Copy setup scripts to /boot/setup/"
 cp -R boot/setup /Volumes/boot/
 
 echo "[05] Generating hostname and hosts files"
-echo $hostname > /Volumes/boot/setup/hostname
-cat << HOSTS > /Volumes/boot/setup/hosts
+mkdir /Volumes/boot/etc
+echo $hostname > /Volumes/boot/etc/hostname
+cat << HOSTS > /Volumes/boot/etc/hosts
 127.0.0.1       localhost
 ::1             localhost ip6-localhost ip6-loopback
 fe00::0         ip6-localnet

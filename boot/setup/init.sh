@@ -10,12 +10,12 @@ sudo ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 
 echo "[02] Linking /etc/hostname to /boot/hostname"
 sudo rm -f /etc/hostname
-sudo ln -sf /boot/hostname /etc/hostname
+sudo ln -sf /boot/etc/hostname /etc/hostname
 echo -e "\tAfter a reboot, this host will be known as '$(cat /etc/hostname)'"
 
 echo "[03] Linking /etc/hosts to /boot/hosts"
 sudo rm -f /etc/hosts
-sudo ln -sf /boot/hosts /etc/hosts
+sudo ln -sf /boot/etc/hosts /etc/hosts
 
 echo "[04] Creating a new user called '${USER}'"
 sudo adduser $USER
