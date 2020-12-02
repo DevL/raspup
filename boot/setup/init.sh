@@ -14,7 +14,7 @@ sudo cp /boot/etc/hosts /etc/hosts
 echo -e "\tAfter a reboot, this host will be known as '$(cat /etc/hostname)'"
 
 echo "[03] Creating a new user called '${USER}'"
-sudo useradd $USER
+sudo useradd --create-home $USER
 sudo passwd $USER
 groups | sed 's/pi //g' | sed -e "s/ /,/g" | xargs -I{} sudo usermod -a -G {} $USER
 groups $USER
