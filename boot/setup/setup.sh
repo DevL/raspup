@@ -15,7 +15,8 @@ echo "[03] Installing the micro text editor"
 #sudo apt install xclip --yes
 curl https://getmic.ro | bash
 sudo mv micro /usr/bin
-sudo cp /boot/setup/.config/micro/settings.json $HOME/.config/micro/settings.json
+mkdir -p $HOME/.config/micro
+cp /boot/setup/.config/micro/settings.json $HOME/.config/micro/settings.json
 echo -e "\tTODO: Install and configure Micro plugins such as fzf."
 
 echo "[04] Updating system"
