@@ -40,35 +40,36 @@ micro -plugin install fzf
 echo "[07] Configuring Vim"
 cp /boot/setup/home/.vimrc.json $HOME/.vimrc
 
-echo "[08] Installing the asdf version manager"
+echo "[08] Start Erlang Port Mapper Daemon (epmd) at boot"
+echo "@reboot $(whoami) /home/$(whoami)/.cron/start_epmd.sh" > epmd.cron
+sudo mv epmd.cron /etc/cron.d/epmd
+sudo chmod root:root /etc/cron.d/epmd
+
+echo "[09] Installing the asdf version manager"
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 cat << ASDF >> $HOME/.bashrc
+
 # asdf version manager
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 ASDF
 
-echo "[09] Installing Erlang"
+echo "[10] Installing Erlang"
 asdf plugin add erlang
 asdf install erlang latest
 asdf global erlang `asdf list erlang`
 
-echo "[10] Installing Elixir"
+echo "[11] Installing Elixir"
 asdf plugin add elixir
 asdf install elixir latest
 asdf global elixir `asdf list elixir`
 
-echo "[11] Installing Ruby"
+echo "[12] Installing Ruby"
 asdf plugin add ruby
 asdf install ruby latest
 asdf global ruby `asdf list ruby`
-
-echo "[12] Start Erlang Port Mapper Daemon (epmd) at boot"
-echo "@reboot $(whoami) /home/$(whoami)/.cron/start_epmd.sh" > epmd.cron
-sudo mv epmd.cron /etc/cron.d/epmd
-sudo chmod root:root /etc/cron.d/epmd
 
 echo "[Done] Rebooting in 5 seconds"
 sleep 5
