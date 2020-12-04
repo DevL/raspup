@@ -23,7 +23,7 @@ echo "[04] Updating system"
 sudo apt update && sudo apt upgrade --yes
 
 echo "[05] Installing additional software"
-sudo apt install automake autoconf curl git httpie libncurses5-dev libssl-dev --yes
+sudo apt install automake autoconf curl fzf git httpie libncurses5-dev libssl-dev vim --yes
 
 echo "[06] Installing the asdf version manager"
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
