@@ -51,5 +51,9 @@ ff02::2         ip6-allrouters
 127.0.0.1       $hostname
 HOSTS
 
+echo "[06] Removing raspberry.local and $hostname.local as known SSH hosts"
+sed -i -e '/raspberrypi/d' ~/.ssh/known_hosts
+sed -i -e "/$hostname/d" ~/.ssh/known_hosts
+
 echo "[Done] Unmounting the SD card"
 diskutil unmount $SDCARD
