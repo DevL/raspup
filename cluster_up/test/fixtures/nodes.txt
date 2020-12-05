@@ -1,0 +1,3 @@
+bramble@red.local
+bramble@green.local
+bramble@blue.local
