@@ -10,8 +10,8 @@ fi
 
 read -p "Enter hostname: " hostname
 read -p "Enter SSID: " ssid
-read -p -s "Enter shared key (hidden): " psk
-read -p -s "Enter Erlang cookie (hidden): " erlangcookie
+read -sp "Enter shared key (hidden): " psk
+read -sp "Enter Erlang cookie (hidden): " erlangcookie
 
 echo "[01] Enable SSH on boot"
 touch $SDCARD/ssh
