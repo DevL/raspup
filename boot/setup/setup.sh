@@ -26,7 +26,7 @@ echo "[05] Updating system"
 sudo apt update && sudo apt upgrade --yes
 
 echo "[06] Enabling unattended upgrades"
-sudo apt-get install unattended-upgrades
+sudo apt-get install unattended-upgrades --yes
 # To only update the package list daily, replace the above with the following
 # cat << APT | sudo tee -a /etc/apt/apt.conf.d/02periodic
 # APT::Periodic::Update-Package-Lists "1";
@@ -36,7 +36,7 @@ sudo apt-get install unattended-upgrades
 # APT
 
 echo "[07] Installing additional software"
-sudo apt install automake autoconf curl fzf git httpie libncurses5-dev libssl-dev vim --yes
+sudo apt install automake autoconf curl fzf git httpie libncurses5-dev libssl-dev mosh vim --yes
 
 echo "[08] Installing the micro text editor"
 # sudo apt install xclip --yes
