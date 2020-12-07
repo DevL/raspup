@@ -55,5 +55,8 @@ echo "[06] Removing raspberry.local and $hostname.local as known SSH hosts"
 sed -i -e '/raspberrypi/d' ~/.ssh/known_hosts
 sed -i -e "/$hostname/d" ~/.ssh/known_hosts
 
+echo "[07] Copying public SSH keys to /boot/setup/home/authorized_keys"
+cat ~/.ssh/id_rsa.pub >> $SDCARD/setup/home/authorized_keys
+
 echo "[Done] Unmounting the SD card"
 diskutil unmount $SDCARD
