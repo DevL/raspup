@@ -64,7 +64,9 @@ sed -i -e '/raspberrypi/d' ~/.ssh/known_hosts
 sed -i -e "/$hostname/d" ~/.ssh/known_hosts
 
 echo "[07] Copying public SSH keys to /boot/setup/home/authorized_keys"
-cat ~/.ssh/id_rsa.pub >> $SDCARD/setup/home/authorized_keys
+test -e ~/.ssh/id_rsa.pub && cat ~/.ssh/id_rsa.pub >> $SDCARD/setup/home/authorized_keys
+test -e ~/.ssh/id_ecdsa.pub && cat ~/.ssh/id_ecdsa.pub >> $SDCARD/setup/home/authorized_keys
+test -e ~/.ssh/id_ed25519.pub && cat ~/.ssh/id_ed25519.pub >> $SDCARD/setup/home/authorized_keys
 
 echo "[08] Storing Erlang cookie"
 echo -n $erlangcookie > $SDCARD/setup/home/.erlang.cookie
