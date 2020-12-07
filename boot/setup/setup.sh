@@ -11,9 +11,8 @@ mkdir -p $HOME/.ssh/
 cp /boot/setup/home/authorized_keys $HOME/.ssh/authorized_keys
 chmod 600 $HOME/.ssh/authorized_keys
 
-echo "[03] Setting the Erlang magic cookie"
-read -p "Enter the cookie: " erlangcookie
-echo -n $erlangcookie > $HOME/.erlang.cookie
+echo "[03] Copying the Erlang magic cookie"
+cp /boot/setup/home/.erlang.cookie $HOME/.erlang.cookie
 chmod 400 $HOME/.erlang.cookie
 
 echo "[04] Adding aliases"

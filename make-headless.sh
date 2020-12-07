@@ -10,7 +10,8 @@ fi
 
 read -p "Enter hostname: " hostname
 read -p "Enter SSID: " ssid
-read -p "Enter shared key: " psk
+read -p -s "Enter shared key (hidden): " psk
+read -p -s "Enter Erlang cookie (hidden): " erlangcookie
 
 echo "[01] Enable SSH on boot"
 touch $SDCARD/ssh
@@ -57,6 +58,9 @@ sed -i -e "/$hostname/d" ~/.ssh/known_hosts
 
 echo "[07] Copying public SSH keys to /boot/setup/home/authorized_keys"
 cat ~/.ssh/id_rsa.pub >> $SDCARD/setup/home/authorized_keys
+
+echo "[08] Storing Erlang cookie"
+echo -n $erlangcookie > $SDCARD/setup/home/.erlang.cookie
 
 echo "[Done] Unmounting the SD card"
 diskutil unmount $SDCARD
