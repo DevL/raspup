@@ -80,7 +80,10 @@ asdf plugin add ruby
 asdf install ruby latest
 asdf global ruby `asdf list ruby`
 
-echo "[15] Cleaning up boot volume"
+echo "[15] Cloning the RaspUp repository"
+git clone https://github.com/DevL/raspup.git
+
+echo "[16] Cleaning up boot volume"
 sudo rm -rf /boot/setup
 
 echo "[Done] Rebooting in 5 seconds"
