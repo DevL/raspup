@@ -2,16 +2,22 @@
 
 SDCARD=/Volumes/boot
 
-echo "Welcome to RaspUp"
-if [ ! -d "$SDCARD" ]; then
-  echo "Insert the SD card and retry."
-  exit 1
-fi
+# echo "Welcome to RaspUp"
+# if [ ! -d "$SDCARD" ]; then
+#   echo "Insert the SD card and retry."
+#   exit 1
+# fi
 
+echo "[User]"
+read -p "Enter the username: " username
+read -sp "Enter the password: " password
+echo
+echo "[Network]"
 read -p "Enter hostname: " hostname
 read -p "Enter SSID: " ssid
 read -sp "Enter shared key (hidden): " psk
-echo ""
+echo
+echo "[Erlang/Elixir Cluster]"
 read -sp "Enter Erlang cookie (hidden): " erlangcookie
 
 echo "[01] Enable SSH on boot"
@@ -63,13 +69,17 @@ cat ~/.ssh/id_rsa.pub >> $SDCARD/setup/home/authorized_keys
 echo "[08] Storing Erlang cookie"
 echo -n $erlangcookie > $SDCARD/setup/home/.erlang.cookie
 
+eco "[09] Storing user information"
+echo -n $username > $SDCARD/setup/username
+echo -n $password > $SDCARD/setup/password
+
 echo "[Done] Unmounting the SD card"
 diskutil unmount $SDCARD
 
 echo "[What now?]"
-echo "First, log in to the Pi and run the /boot/setup/init.sh script."
+echo "First, log in to the Pi and run the '/boot/setup/init.sh' script."
 echo "    ssh pi@raspberrypi.local"
-echo "Secondly, log in as the new user and run the /boot/setup/setup.sh script."
+echo "Secondly, log in as the new user and run the '/boot/setup/setup.sh' script."
 echo "    ssh devl@$hostname.local"
 
 
