@@ -65,3 +65,11 @@ echo -n $erlangcookie > $SDCARD/setup/home/.erlang.cookie
 
 echo "[Done] Unmounting the SD card"
 diskutil unmount $SDCARD
+
+echo "[What now?]"
+echo "First, log in to the Pi and run the /boot/setup/init.sh script."
+echo "    ssh pi@raspberrypi.local"
+echo "Secondly, log in as the new user and run the /boot/setup/setup.sh script."
+echo "    ssh devl@$hostname.local"
+
+
