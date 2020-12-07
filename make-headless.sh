@@ -69,7 +69,7 @@ cat ~/.ssh/id_rsa.pub >> $SDCARD/setup/home/authorized_keys
 echo "[08] Storing Erlang cookie"
 echo -n $erlangcookie > $SDCARD/setup/home/.erlang.cookie
 
-eco "[09] Storing user information"
+echo "[09] Storing user information"
 echo -n $username > $SDCARD/setup/username
 echo -n $password > $SDCARD/setup/password
 
