@@ -2,11 +2,11 @@
 
 SDCARD=/Volumes/boot
 
-# echo "Welcome to RaspUp"
-# if [ ! -d "$SDCARD" ]; then
-#   echo "Insert the SD card and retry."
-#   exit 1
-# fi
+echo "Welcome to RaspUp"
+if [ ! -d "$SDCARD" ]; then
+  echo "Insert the SD card and retry."
+  exit 1
+fi
 
 echo "[User]"
 read -p "Enter the username: " username
