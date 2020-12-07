@@ -80,6 +80,9 @@ asdf plugin add ruby
 asdf install ruby latest
 asdf global ruby `asdf list ruby`
 
+echo "[15] Cleaning up boot volume"
+sudo rm -rf /boot/setup
+
 echo "[Done] Rebooting in 5 seconds"
 sleep 5
 sudo reboot
