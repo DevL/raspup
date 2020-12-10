@@ -69,6 +69,7 @@ echo "[12] Installing Elixir"
 asdf plugin add elixir
 asdf install elixir latest
 asdf global elixir `asdf list elixir`
+mix local.hex --force
 
 echo "[13] Installing Ruby"
 asdf plugin add ruby
