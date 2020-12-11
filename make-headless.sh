@@ -56,6 +56,11 @@ fe00::0         ip6-localnet
 ff00::0         ip6-mcastprefix
 ff02::1         ip6-allnodes
 ff02::2         ip6-allrouters
+192.168.10.150  raspup.local
+192.168.10.151  red.local
+192.168.10.152  green.local
+192.168.10.153  blue.local
+192.168.10.160  neo.local
 127.0.0.1       $hostname
 HOSTS
 
