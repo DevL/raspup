@@ -78,6 +78,7 @@ asdf install ruby latest
 asdf global ruby `asdf list ruby`
 
 echo "[14] Cloning the RaspUp repository"
+git config --global pull.rebase true
 git clone https://github.com/DevL/raspup.git
 
 echo "[15] Cleaning up boot volume"

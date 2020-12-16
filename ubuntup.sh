@@ -125,5 +125,3 @@ diskutil unmount $SDCARD
 echo "[What now?]"
 echo "Log in as the new user and run the '/boot/firmware/setup/ubuntu-setup.sh' script."
 echo "    ssh $USERNAME@ubuntu.local"
-
-
