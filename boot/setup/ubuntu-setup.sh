@@ -85,5 +85,7 @@ echo "[14] Cleaning up boot volume"
 sudo rm -rf $BOOTPATH/setup
 
 echo "[Done] Rebooting in 5 seconds"
+echo "Hostname will be change after reboot. Use the following to log in."
+echo "    ssh $USERNAME@$HOSTNAME.local"
 sleep 5
 sudo reboot

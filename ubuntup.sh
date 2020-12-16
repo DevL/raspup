@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SDCARD=/Volumes/system-boot
+SDCARD="/Volumes/system-boot"
 
 echo "Welcome to RaspUp (Ubuntu Edition)"
 if [ ! -d "$SDCARD" ]; then
@@ -103,8 +103,8 @@ ff02::2         ip6-allrouters
 127.0.0.1       $HOSTNAME
 HOSTS
 
-echo "[06] Removing raspberry.local and $hostname.local as known SSH hosts"
-sed -i -e '/raspberrypi/d' ~/.ssh/known_hosts
+echo "[06] Removing ubunut.local and $hostname.local as known SSH hosts"
+sed -i -e '/ubuntu/d' ~/.ssh/known_hosts
 sed -i -e "/$HOSTNAME/d" ~/.ssh/known_hosts
 
 echo "[07] Copying public SSH keys to /boot/setup/home/authorized_keys"
