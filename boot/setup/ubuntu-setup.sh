@@ -32,6 +32,7 @@ cat << ALIASES >> $USERHOME/.bashrc
 
 # Additional aliases
 alias ll='ls -lAF'
+alias volumes='sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL'
 ALIASES
 
 echo "[06] Installing the micro text editor"

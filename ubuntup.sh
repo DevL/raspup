@@ -64,17 +64,19 @@ packages:
 - avahi-daemon
 - curl
 - fzf
+- gcc
 - git
 - httpie
 - libncurses5-dev
 - libssl-dev
+- make
 - mosh
+- unzip
 - vim
 
 runcmd:
-- [ locale-gen, en_GB.UTF-8 ]
-- [ update-locale ]
-
+- 'locale-gen en_GB.UTF-8'
+- 'update-locale'
 
 power_state:
   mode: reboot
@@ -121,9 +123,7 @@ echo "[Done] Unmounting the SD card"
 diskutil unmount $SDCARD
 
 echo "[What now?]"
-echo "First, log in to the Pi and run the '/boot/setup/init.sh' script."
+echo "Log in as the new user and run the '/boot/firmware/setup/ubuntu-setup.sh' script."
 echo "    ssh $USERNAME@ubuntu.local"
-echo "Secondly, log in as the new user and run the '/boot/setup/setup.sh' script."
-echo "    ssh $USERNAME@$HOSTNAME.local"
 
 

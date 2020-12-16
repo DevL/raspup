@@ -15,6 +15,7 @@ cat << ALIASES >> $HOME/.bashrc
 
 # Additional aliases
 alias ll='ls -lAF'
+alias volumes='sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL'
 ALIASES
 
 echo "[04] Updating system"
