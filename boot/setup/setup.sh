@@ -46,9 +46,11 @@ echo "[08] Configuring Vim"
 cp /boot/setup/home/.vimrc.json $HOME/.vimrc
 
 echo "[09] Start Erlang Port Mapper Daemon (epmd) at boot"
-echo "@reboot $(whoami) /home/$(whoami)/.cron/start_epmd.sh" > epmd.cron
+mkdir $HOME/.cron
+cp /boot/setup/home/.cron/start_epmd.sh $HOME/.cron/start_epmd.sh
+echo "@reboot $(whoami) $HOME/.cron/start_epmd.sh" > epmd.cron
 sudo mv epmd.cron /etc/cron.d/epmd
-sudo chmod root:root /etc/cron.d/epmd
+sudo chown root:root /etc/cron.d/epmd
 
 echo "[10] Installing the asdf version manager"
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
