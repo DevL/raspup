@@ -52,6 +52,7 @@ cp /boot/setup/home/.cron/start_epmd.sh $USERHOME/.cron/start_epmd.sh
 echo "@reboot $USERNAME $USERHOME/.cron/start_epmd.sh" > epmd.cron
 sudo mv epmd.cron /etc/cron.d/epmd
 sudo chown root:root /etc/cron.d/epmd
+sudo chmod 600 /etc/cron.d/epmd
 
 echo "[09] Installing the asdf version manager"
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
