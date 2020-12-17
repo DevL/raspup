@@ -58,10 +58,11 @@ ssh_pwauth: true
 package_update: true
 package_upgrade: true
 packages:
-- unattended-upgrades
-- automake
-- autoconf
+- openssh-server
 - avahi-daemon
+- unattended-upgrades
+- autoconf
+- automake
 - curl
 - fzf
 - gcc
