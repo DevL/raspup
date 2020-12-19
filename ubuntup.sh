@@ -71,8 +71,10 @@ packages:
 - libncurses5-dev
 - libssl-dev
 - make
+- micro
 - mosh
 - unzip
+- xclip
 - vim
 
 runcmd:
