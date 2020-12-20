@@ -59,10 +59,10 @@ echo "[09] Enabling remote desktop"
 #sudo systemctl enable xrdp
 echo " => Starting desktop on boot"
 systemctl set-default graphical.target
-echo " => Installing VNC server"
-sudo apt install tigervnc-standalone-server --yes
-vncpasswd
+# echo " => Installing VNC server"
+# sudo apt install tigervnc-standalone-server --yes
 echo " => Configuring VNC session"
+vncpasswd
 mkdir $USERHOME/.vnc
 mv $USERHOME/.vnc/xstartup $USERHOME/.vnc/xstartup.bak
 cat << VNC > $USERHOME/.vnc/xstartup

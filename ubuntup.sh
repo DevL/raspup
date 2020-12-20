@@ -18,6 +18,7 @@ read -p "Enter SSID: " SSID
 read -sp "Enter shared key (hidden): " PSK
 echo
 echo "[Erlang/Elixir Cluster]"
+cat ~/.erlang.cookie | pbcopy
 read -sp "Enter Erlang cookie (hidden): " ERLANGCOOKIE
 
 echo "[01] Enable SSH on boot"
@@ -58,28 +59,37 @@ ssh_pwauth: true
 package_update: true
 package_upgrade: true
 packages:
-- openssh-server
-- avahi-daemon
-- unattended-upgrades
 - autoconf
 - automake
+- avahi-daemon
 - curl
 - fzf
 - gcc
 - git
+- gsfonts-x11
 - httpie
 - libncurses5-dev
 - libssl-dev
+- lightdm
 - make
 - micro
 - mosh
+- tasksel
+- tigervnc-scraping-server
+- tigervnc-standalone-server
+- unattended-upgrades
 - unzip
-- xclip
 - vim
+- xclip
+- xfonts-75dpi
+- xfonts-100dpi
 
 runcmd:
+- 'hostnamectl set-hostname $HOSTNAME'
 - 'locale-gen en_GB.UTF-8'
 - 'update-locale'
+- 'tasksel install ubuntu-mate-core'
+- 'service lightdm start'
 
 power_state:
   mode: reboot
