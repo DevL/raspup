@@ -71,26 +71,28 @@ packages:
 - httpie
 - libncurses5-dev
 - libssl-dev
-- lightdm
+#- lightdm
 - make
 - micro
 - mosh
-- tasksel
-- tigervnc-scraping-server
-- tigervnc-standalone-server
+- openssh-server
+#- tasksel
+#- tigervnc-scraping-server
+#- tigervnc-standalone-server
 - unattended-upgrades
 - unzip
 - vim
-- xclip
-- xfonts-75dpi
-- xfonts-100dpi
+#- xclip
+#- xfonts-75dpi
+#- xfonts-100dpi
 
 runcmd:
+- 'systemctl enable --now ssh'
 - 'hostnamectl set-hostname $HOSTNAME'
 - 'locale-gen en_GB.UTF-8'
 - 'update-locale'
-- 'tasksel install ubuntu-mate-core'
-- 'service lightdm start'
+#- 'tasksel install ubuntu-mate-core'
+#- 'service lightdm start'
 
 power_state:
   mode: reboot
