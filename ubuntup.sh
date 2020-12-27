@@ -63,6 +63,7 @@ packages:
 - automake
 - avahi-daemon
 - curl
+- erlang
 - fzf
 - gcc
 - git
