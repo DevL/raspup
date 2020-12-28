@@ -55,45 +55,45 @@ sudo chown root:root /etc/cron.d/epmd
 sudo chmod 600 /etc/cron.d/epmd
 
 echo "[09] Enabling remote desktop"
-#sudo apt install xrdp
-#sudo systemctl enable xrdp
-echo " => Starting desktop on boot"
-systemctl set-default graphical.target
+sudo apt install xrdp
+sudo systemctl enable xrdp
+#echo " => Starting desktop on boot"
+#systemctl set-default graphical.target
 # echo " => Installing VNC server"
 # sudo apt install tigervnc-standalone-server --yes
-echo " => Configuring VNC session"
-vncpasswd
-mkdir $USERHOME/.vnc
-mv $USERHOME/.vnc/xstartup $USERHOME/.vnc/xstartup.bak
-cat << VNC > $USERHOME/.vnc/xstartup
+#echo " => Configuring VNC session"
+#vncpasswd
+#mkdir $USERHOME/.vnc
+#mv $USERHOME/.vnc/xstartup $USERHOME/.vnc/xstartup.bak
+#cat << VNC > $USERHOME/.vnc/xstartup
 #!/bin/sh
-exec /etc/vnc/xstartup
-xrdb $HOME/.Xresources
-vncconfig -iconic &
-dbus-launch --exit-with-session gnome-session &
-VNC
-chmod u+x $USERHOME/.vnc/xstartup
-echo " => Configuring VNC service"
-cat << VNCSERVICE | sudo tee /etc/systemd/system/vncserver@.service
-[Unit]
-Description=Remote desktop service (VNC)
-After=syslog.target network.target
+#exec /etc/vnc/xstartup
+#xrdb $HOME/.Xresources
+#vncconfig -iconic &
+#dbus-launch --exit-with-session gnome-session &
+#VNC
+#chmod u+x $USERHOME/.vnc/xstartup
+#echo " => Configuring VNC service"
+#cat << VNCSERVICE | sudo tee /etc/systemd/system/vncserver@.service
+#[Unit]
+#Description=Remote desktop service (VNC)
+#After=syslog.target network.target
 
-[Service]
-Type=simple
-User=$USERNAME
-PAMName=login
-PIDFile=/home/%u/.vnc/%H%i.pid
-ExecStartPre=/usr/bin/vncserver -kill :%i > /dev/null 2>&1 || :
-ExecStart=/usr/bin/vncserver :%i -localhost no -geometry 1280x768
-ExecStop=/usr/bin/vncserver -kill :%i
+#[Service]
+#Type=simple
+#User=$USERNAME
+#PAMName=login
+#PIDFile=/home/%u/.vnc/%H%i.pid
+#ExecStartPre=/usr/bin/vncserver -kill :%i > /dev/null 2>&1 || :
+#ExecStart=/usr/bin/vncserver :%i -localhost no -geometry 1280x768
+#ExecStop=/usr/bin/vncserver -kill :%i
 
-[Install]
-WantedBy=multi-user.target
-VNCSERVICE
-systemctl daemon-reload
-systemctl enable vncserver@1.service
-systemctl start vncserver@1.service
+#[Install]
+#WantedBy=multi-user.target
+#VNCSERVICE
+#systemctl daemon-reload
+#systemctl enable vncserver@1.service
+#systemctl start vncserver@1.service
 
 echo "[10] Installing the asdf version manager"
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
@@ -106,10 +106,10 @@ cat << ASDF >> $USERHOME/.bashrc
 . $USERHOME/.asdf/completions/asdf.bash
 ASDF
 
-echo "[11] Installing Erlang"
-asdf plugin add erlang
-asdf install erlang latest
-asdf global erlang `asdf list erlang`
+#echo "[11] Installing Erlang"
+#asdf plugin add erlang
+#asdf install erlang latest
+#asdf global erlang `asdf list erlang`
 
 echo "[12] Installing Elixir"
 asdf plugin add elixir

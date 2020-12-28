@@ -71,28 +71,21 @@ packages:
 - httpie
 - libncurses5-dev
 - libssl-dev
-#- lightdm
 - make
 - micro
 - mosh
 - openssh-server
-#- tasksel
-#- tigervnc-scraping-server
-#- tigervnc-standalone-server
+- tasksel
 - unattended-upgrades
 - unzip
 - vim
-#- xclip
-#- xfonts-75dpi
-#- xfonts-100dpi
 
 runcmd:
 - 'systemctl enable --now ssh'
 - 'hostnamectl set-hostname $HOSTNAME'
 - 'locale-gen en_GB.UTF-8'
 - 'update-locale'
-#- 'tasksel install ubuntu-mate-core'
-#- 'service lightdm start'
+- 'tasksel install ubuntu-mate-core'
 
 power_state:
   mode: reboot
@@ -119,7 +112,7 @@ ff02::2         ip6-allrouters
 127.0.0.1       $HOSTNAME
 HOSTS
 
-echo "[06] Removing ubunut.local and $hostname.local as known SSH hosts"
+echo "[06] Removing ubuntu.local and $hostname.local as known SSH hosts"
 sed -i -e '/ubuntu/d' ~/.ssh/known_hosts
 sed -i -e "/$HOSTNAME/d" ~/.ssh/known_hosts
 
@@ -140,4 +133,4 @@ diskutil unmount $SDCARD
 
 echo "[What now?]"
 echo "Log in as the new user and run the '/boot/firmware/setup/ubuntu-setup.sh' script."
-echo "    ssh $USERNAME@ubuntu.local"
+echo "    ssh $USERNAME@$HOSTNAME.local"
