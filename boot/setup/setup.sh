@@ -32,7 +32,7 @@ sudo apt-get install unattended-upgrades --yes
 # APT
 
 echo "[06] Installing additional software"
-sudo apt install automake autoconf curl fzf git httpie libncurses5-dev libssl-dev mosh vim --yes
+sudo apt install automake autoconf cmake curl fzf git httpie libncurses5-dev libssl-dev mosh vim --yes
 
 echo "[07] Installing the micro text editor"
 # sudo apt install xclip --yes
